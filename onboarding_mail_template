@@ -1,0 +1,314 @@
+Subject: IT procedures - Welcome mail
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+To: {{private_mail}}, {{company_mail}}
+Cc: {{manager_mail}}, it@gigaspaces.com
+
+
+<div dir=3D"ltr"><div style=3D"font-size:12.8px">Hi {{user_first_name}},</d=
+iv><div style=3D"font-size:12.8px"><div style=3D"font-size:12.8px"><br></di=
+v><div style=3D"font-size:12.8px">Welcome to {{company_name}}!</div><div st=
+yle=3D"font-size:12.8px"><br></div><div style=3D"font-size:12.8px"><div sty=
+le=3D"color:rgb(0,0,0);font-family:arial,verdana,sans-serif;font-size:13.33=
+33px">This email&#39;s main purpose is to help you get familiarized with ho=
+w to contact the=C2=A0<span class=3D"gmail-m_7163394082277396992gmail-m_745=
+8735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155282gmail=
+-m_6854469762238993177gmail-m_8045617309059342021m_-6505044364960973960gmai=
+l-il"><span class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003=
+gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238=
+993177gmail-il"><span class=3D"gmail-m_7163394082277396992gmail-m_745873542=
+7088711003gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-il"><=
+span class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m=
+_2344231487541322849gmail-il">IT</span></span></span>=C2=A0</span>team and =
+to set up your accounts in our systems.</div><div style=3D"color:rgb(0,0,0)=
+;font-family:arial,verdana,sans-serif;font-size:13.3333px"><br></div><div s=
+tyle=3D"color:rgb(0,0,0);font-family:arial,verdana,sans-serif;font-size:13.=
+3333px"><br></div><div style=3D"color:rgb(0,0,0);font-family:arial,verdana,=
+sans-serif;font-size:13.3333px">For signing in to all your apps, you have t=
+o use Okta SSO.</div><div style=3D"color:rgb(0,0,0);font-family:arial,verda=
+na,sans-serif;font-size:13.3333px"><br></div><div style=3D"color:rgb(0,0,0)=
+;font-family:arial,verdana,sans-serif;font-size:13.3333px"><p style=3D"marg=
+in:3px 0px 10px;width:970.412px;font-size:14px;line-height:19.6px;float:non=
+e;color:rgb(17,17,17);font-family:jaf-bernina-sans,tahoma,geneva,sans-serif=
+">How to Access=C2=A0<span class=3D"gmail-m_7163394082277396992gmail-m_7458=
+735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-=
+m_6854469762238993177gmail-il">Okta</span>=C2=A0SSO for the first time:</p>=
+<ul style=3D"padding:0px 0px 0px 2em;margin:10px 0px;color:rgb(17,17,17);fo=
+nt-family:jaf-bernina-sans,tahoma,geneva,sans-serif;font-size:15px"><li sty=
+le=3D"margin-left:15px;list-style:disc">Instructions for signing on for the=
+ first time:</li><ul style=3D"padding:0px 0px 0px 2em;margin:10px 0px"><li =
+style=3D"margin-left:15px;list-style:disc">Click on this activation link fo=
+r activating your Okta account: {{activation_link}}</li><li style=3D"margin=
+-left:15px;list-style:disc">You will be asked for creating a new password. =
+Then, choose a &quot;forgot password&quot; question and Click on a picture =
+to choose a security image. Then, click on =E2=80=9CCreate My Account&quot;=
+</li><li style=3D"margin-left:15px;list-style:disc">Sign in with your usern=
+ame and the password that you created.</li><li style=3D"margin-left:15px;li=
+st-style:disc">You will be asked to verify your account - There are few way=
+s to verify your account:</li><ul style=3D"padding:0px 0px 0px 2em;margin:1=
+0px 0px"><li style=3D"margin-left:15px;list-style:disc">You can use these=
+=C2=A0<a href=3D"https://docs.google.com/a/gigaspaces.com/document/d/1fkW_z=
+YPc4xkIGHNuTvj75O-TxU_C06qsHaZSqvP8W2Y/edit?usp=3Dsharing" target=3D"_blank=
+" style=3D"color:rgb(0,103,179);text-decoration-line:none">instructions</a>=
+=C2=A0to set up =E2=80=9C<span class=3D"gmail-m_7163394082277396992gmail-m_=
+7458735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155282gm=
+ail-m_6854469762238993177gmail-il">Okta</span>=C2=A0verify&quot; MFA app.</=
+li><li style=3D"margin-left:15px;list-style:disc">Set up Google Authenticat=
+or app by using these=C2=A0<a href=3D"https://docs.google.com/a/gigaspaces.=
+com/document/d/1F7SOfDGjIeTNkTA-H4E6RevX8e9SDCzoZTJOc9uiMrM/edit?usp=3Dshar=
+ing" target=3D"_blank" style=3D"color:rgb(0,103,179);text-decoration-line:n=
+one">instructions</a></li><li style=3D"margin-left:15px;list-style:disc">If=
+ you already have an MFA app, you can choose - set up =E2=80=9CGoogle Authe=
+nticator&quot; and use your own app to scan the QR code.</li><li style=3D"m=
+argin-left:15px;list-style:disc">Set up SMS authentication code by using th=
+ese=C2=A0<a href=3D"https://drive.google.com/a/gigaspaces.com/file/d/0B7lgK=
+6ga_YxPdGt2S214V2VrR3M/view?usp=3Dsharing" target=3D"_blank" style=3D"color=
+:rgb(0,103,179);text-decoration-line:none">instructions</a></li></ul></ul><=
+li style=3D"margin-left:15px;list-style:disc">Instructions for using the br=
+owser plugin:</li><ul style=3D"padding:0px 0px 0px 2em;margin:10px 0px"><li=
+ style=3D"margin-left:15px;list-style:disc">After you are log-in to=C2=A0<s=
+pan class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_=
+2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gm=
+ail-il">Okta</span>, Please install the=C2=A0<span class=3D"gmail-m_7163394=
+082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_7=
+920427479223155282gmail-m_6854469762238993177gmail-il">Okta</span>=C2=A0plu=
+gin by clicking the green =E2=80=9CInstall plugin&quot; button on the right=
+ side of the page.</li><li style=3D"margin-left:15px;list-style:disc">Refre=
+sh the page and now you can go to any app that you want to by using=C2=A0<s=
+pan class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_=
+2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gm=
+ail-il">Okta</span>=C2=A0plugin extension!</li><li style=3D"margin-left:15p=
+x;list-style:disc">From now on, you can sign to=C2=A0<span class=3D"gmail-m=
+_7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849g=
+mail-m_7920427479223155282gmail-m_6854469762238993177gmail-il">Okta</span>=
+=C2=A0by going to=C2=A0<a href=3D"https://gigaspaces.okta.com/" target=3D"_=
+blank" style=3D"color:rgb(0,103,179);text-decoration-line:none">https://gig=
+aspaces.<span class=3D"gmail-m_7163394082277396992gmail-m_74587354270887110=
+03gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_68544697622=
+38993177gmail-il">okta</span>.com<wbr>/</a>=C2=A0and sign in with your cred=
+entials, Or by using=C2=A0<span class=3D"gmail-m_7163394082277396992gmail-m=
+_7458735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155282g=
+mail-m_6854469762238993177gmail-il">Okta=C2=A0</span>plugin extension.</li>=
+</ul></ul><br style=3D"color:rgb(34,34,34);font-family:jaf-bernina-sans,tah=
+oma,geneva,sans-serif;font-size:15px"><p style=3D"color:rgb(34,34,34);margi=
+n:3px 0px 10px;width:560px;font-size:14px;line-height:19.6px;float:none;fon=
+t-family:jaf-bernina-sans,tahoma,geneva,sans-serif">Questions on How to Use=
+ SSO?</p><ul style=3D"padding:0px 0px 0px 2em;margin:10px 0px;color:rgb(17,=
+17,17);font-family:jaf-bernina-sans,tahoma,geneva,sans-serif;font-size:15px=
+"><li style=3D"margin-left:15px;list-style:disc">Watch this step-by-step vi=
+deo:=C2=A0<a href=3D"https://support.okta.com/help/articles/Knowledge_Artic=
+le/Intro-to-Okta-for-Users" target=3D"_blank" style=3D"color:rgb(0,103,179)=
+;text-decoration-line:none">How to use=C2=A0<span class=3D"gmail-m_71633940=
+82277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_79=
+20427479223155282gmail-m_6854469762238993177gmail-il">Okta</span>=C2=A0Sing=
+le Sign-On</a></li><li style=3D"margin-left:15px;list-style:disc"><a href=
+=3D"https://docs.google.com/a/gigaspaces.com/document/d/18I42GnWsaztygCrBjr=
+jky4KmyXK3bO9WzVjSxsEgvsg/edit?usp=3Dsharing" target=3D"_blank" style=3D"co=
+lor:rgb(0,103,179);text-decoration-line:none">Check out some frequently ask=
+ed questions (FAQ)</a></li></ul><p style=3D"color:rgb(34,34,34);margin:3px =
+0px 10px;width:560px;font-size:14px;line-height:19.6px;float:none;font-fami=
+ly:jaf-bernina-sans,tahoma,geneva,sans-serif"><br></p><p style=3D"color:rgb=
+(34,34,34);margin:3px 0px 10px;width:560px;font-size:14px;line-height:19.6p=
+x;float:none;font-family:jaf-bernina-sans,tahoma,geneva,sans-serif">If you =
+are missing any app in=C2=A0<span class=3D"gmail-m_7163394082277396992gmail=
+-m_7458735427088711003gmail-m_2344231487541322849gmail-m_792042747922315528=
+2gmail-m_6854469762238993177gmail-il">Okta</span>, or there are apps that y=
+ou can&#39;t log in, let us know.</p><p style=3D"color:rgb(34,34,34);margin=
+:3px 0px 10px;width:560px;font-size:14px;line-height:19.6px;float:none;font=
+-family:jaf-bernina-sans,tahoma,geneva,sans-serif"><br></p><p style=3D"colo=
+r:rgb(34,34,34);margin:3px 0px 10px;width:560px;font-size:14px;line-height:=
+19.6px;float:none;font-family:jaf-bernina-sans,tahoma,geneva,sans-serif"><b=
+><u>Here are some of our main apps:</u></b></p><div style=3D"font-size:13.3=
+333px"><span class=3D"gmail-m_7163394082277396992gmail-m_745873542708871100=
+3gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_685446976223=
+8993177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-7786601119=
+660424266gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-m_755=
+9052052967624169gmail-im" style=3D"color:rgb(34,34,34);font-family:arial,sa=
+ns-serif;font-size:12.8px"><span class=3D"gmail-m_7163394082277396992gmail-=
+m_7458735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155282=
+gmail-m_6854469762238993177gmail-m_8045617309059342021m_-650504436496097396=
+0gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-m_-2842914679=
+100386329gmail-m_7559052052967624169gmail-m_2410897072631350947m_-591839497=
+1580022395m_1731240218537656823gmail-"><b>Gmail-=C2=A0</b>You can go there =
+through=C2=A0Okta.</span></span></div><div style=3D"font-size:13.3333px"><b=
+ style=3D"color:rgb(34,34,34);font-family:arial,sans-serif;font-size:12.8px=
+">=C2=A0</b></div><div style=3D"font-size:13.3333px"><span class=3D"gmail-m=
+_7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849g=
+mail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_80456173090593=
+42021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_343262730258=
+3918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gmail-im" sty=
+le=3D"color:rgb(34,34,34);font-family:arial,sans-serif;font-size:12.8px"><s=
+pan class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_=
+2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gm=
+ail-m_8045617309059342021m_-6505044364960973960gmail-m_-7786601119660424266=
+gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-m_755905205296=
+7624169gmail-m_2410897072631350947m_-5918394971580022395m_17312402185376568=
+23gmail-"><b>Samanage</b>(Our helpdesk application)-</span></span></div><di=
+v style=3D"font-size:13.3333px"><span class=3D"gmail-m_7163394082277396992g=
+mail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_79204274792231=
+55282gmail-m_6854469762238993177gmail-m_8045617309059342021m_-6505044364960=
+973960gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-m_-28429=
+14679100386329gmail-m_7559052052967624169gmail-im" style=3D"color:rgb(34,34=
+,34);font-family:arial,sans-serif;font-size:12.8px"><span class=3D"gmail-m_=
+7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gm=
+ail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_804561730905934=
+2021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_3432627302583=
+918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gmail-m_241089=
+7072631350947m_-5918394971580022395m_1731240218537656823gmail-"><b><u><br><=
+/u></b></span></span></div><div style=3D"font-size:13.3333px"><span class=
+=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_234423148=
+7541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_804=
+5617309059342021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_3=
+432627302583918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gm=
+ail-im" style=3D"color:rgb(34,34,34);font-family:arial,sans-serif;font-size=
+:12.8px"><span class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711=
+003gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762=
+238993177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-77866011=
+19660424266gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-m_7=
+559052052967624169gmail-m_2410897072631350947m_-5918394971580022395m_173124=
+0218537656823gmail-"><b>There are few ways to contact the=C2=A0<span class=
+=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_234423148=
+7541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_804=
+5617309059342021m_-6505044364960973960gmail-il"><span class=3D"gmail-m_7163=
+394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-=
+m_7920427479223155282gmail-m_6854469762238993177gmail-il"><span class=3D"gm=
+ail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_234423148754132=
+2849gmail-m_7920427479223155282gmail-il"><span class=3D"gmail-m_71633940822=
+77396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-il">IT<=
+/span></span></span></span>=C2=A0team and submit your request:</b></span></=
+span></div><div style=3D"color:rgb(34,34,34);font-family:arial,sans-serif;f=
+ont-size:12.8px"><div style=3D"font-size:12.8px"><ul><span class=3D"gmail-m=
+_7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849g=
+mail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_80456173090593=
+42021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_343262730258=
+3918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gmail-m_24108=
+97072631350947m_-5918394971580022395m_1731240218537656823gmail-"><li style=
+=3D"margin-left:15px">Simply log in with your Gmail credentials=C2=A0to=C2=
+=A0<span class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gma=
+il-m_2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238993=
+177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-77866011196604=
+24266gmail-m_-6361222184061741205gmail-m_-4136911380220876601gmail-m_-62562=
+18999847706718gmail-im" style=3D"color:rgb(0,0,255);font-size:12.8px">=C2=
+=A0</span><u style=3D"color:rgb(0,0,255);font-size:12.8px"><a href=3D"https=
+://hd.gigaspaces.com/login" target=3D"_blank">https://hd.gig<wbr>aspaces.co=
+m/login</a></u>=C2=A0and create a new ticket (You can follow these=C2=A0<a =
+href=3D"https://docs.google.com/a/gigaspaces.com/document/d/1C__7M0-ofLWho-=
+PLddvQmztCXXFafI0c9HCTkeBvK1Q/edit?usp=3Dsharing" target=3D"_blank">instruc=
+tions</a>=C2=A0for opening a ticket from the portal).</li><div><div class=
+=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_234423148=
+7541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_804=
+5617309059342021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_3=
+432627302583918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gm=
+ail-adm"><div class=3D"gmail-m_7163394082277396992gmail-m_74587354270887110=
+03gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_68544697622=
+38993177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-778660111=
+9660424266gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-m_75=
+59052052967624169gmail-ajR gmail-m_7163394082277396992gmail-m_7458735427088=
+711003gmail-m_2344231487541322849gmail-m_7920427479223155282gmail-m_6854469=
+762238993177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-77866=
+01119660424266gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-=
+m_7559052052967624169gmail-h4"><div class=3D"gmail-m_7163394082277396992gma=
+il-m_7458735427088711003gmail-m_2344231487541322849gmail-m_7920427479223155=
+282gmail-m_6854469762238993177gmail-m_8045617309059342021m_-650504436496097=
+3960gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-m_-2842914=
+679100386329gmail-m_7559052052967624169gmail-ajT"></div></div></div><div cl=
+ass=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_234423=
+1487541322849gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_=
+8045617309059342021m_-6505044364960973960gmail-m_-7786601119660424266gmail-=
+m_3432627302583918503gmail-m_-2842914679100386329gmail-m_755905205296762416=
+9gmail-im"><li style=3D"margin-left:15px">Email us at=C2=A0<a href=3D"mailt=
+o:hd@gigaspaces.com" target=3D"_blank">hd@gigaspaces.com</a>=C2=A0with your=
+ request.</li></div></div></span><div><div class=3D"gmail-m_716339408227739=
+6992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_792042747=
+9223155282gmail-m_6854469762238993177gmail-m_8045617309059342021m_-65050443=
+64960973960gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-m_-=
+2842914679100386329gmail-m_7559052052967624169gmail-adm"><div class=3D"gmai=
+l-m_7163394082277396992gmail-m_7458735427088711003gmail-m_23442314875413228=
+49gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_80456173090=
+59342021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_343262730=
+2583918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gmail-ajR =
+gmail-m_7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541=
+322849gmail-m_7920427479223155282gmail-m_6854469762238993177gmail-m_8045617=
+309059342021m_-6505044364960973960gmail-m_-7786601119660424266gmail-m_34326=
+27302583918503gmail-m_-2842914679100386329gmail-m_7559052052967624169gmail-=
+h4"><div class=3D"gmail-m_7163394082277396992gmail-m_7458735427088711003gma=
+il-m_2344231487541322849gmail-m_7920427479223155282gmail-m_6854469762238993=
+177gmail-m_8045617309059342021m_-6505044364960973960gmail-m_-77866011196604=
+24266gmail-m_3432627302583918503gmail-m_-2842914679100386329gmail-m_7559052=
+052967624169gmail-ajT"></div></div></div><div class=3D"gmail-m_716339408227=
+7396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_792042=
+7479223155282gmail-m_6854469762238993177gmail-m_8045617309059342021m_-65050=
+44364960973960gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-=
+m_-2842914679100386329gmail-m_7559052052967624169gmail-im"><li style=3D"mar=
+gin-left:15px">Use the=C2=A0<span class=3D"gmail-m_7163394082277396992gmail=
+-m_7458735427088711003gmail-m_2344231487541322849gmail-m_792042747922315528=
+2gmail-m_6854469762238993177gmail-m_8045617309059342021m_-65050443649609739=
+60gmail-m_-7786601119660424266gmail-m_3432627302583918503gmail-il">Samanage=
+</span>=C2=A0app on your smartphone to submit your request. (Go to the Appl=
+e AppStore/ Google PlayStore, search &quot;<span class=3D"gmail-m_716339408=
+2277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_792=
+0427479223155282gmail-m_6854469762238993177gmail-m_8045617309059342021m_-65=
+05044364960973960gmail-m_-7786601119660424266gmail-m_3432627302583918503gma=
+il-il">Samanage</span>&quot; in the search bar and download the app).=C2=A0=
+</li></div></div></ul></div></div></div><div style=3D"color:rgb(0,0,0);font=
+-family:arial,verdana,sans-serif;font-size:13.3333px"><br></div><div style=
+=3D"font-family:arial,verdana,sans-serif;font-size:13.3333px"><div style=3D=
+"font-family:arial,sans-serif;font-size:12.8px"><b>Slack</b>(Our main Chat =
+application)- You got an invitation to your company mail. Please create a p=
+assword for you and then you can add=C2=A0<span class=3D"gmail-m_7163394082=
+277396992gmail-m_7458735427088711003gmail-m_2344231487541322849gmail-m_7920=
+427479223155282gmail-il">it</span>=C2=A0to Okta.</div><div style=3D"font-fa=
+mily:arial,sans-serif;font-size:12.8px"><br></div><div style=3D"font-family=
+:arial,sans-serif;font-size:12.8px"><b>Zoom</b>(our main conference video a=
+pplication) - You can go there through<span style=3D"font-size:12.8px">=C2=
+=A0Okta.</span></div><div style=3D"font-family:arial,sans-serif;font-size:1=
+2.8px"><br></div><div style=3D"font-family:arial,sans-serif;font-size:12.8p=
+x"><br></div><div style=3D"font-family:arial,sans-serif;font-size:12.8px"><=
+b style=3D"font-size:12.8px">VPN</b><span style=3D"font-size:12.8px">-=C2=
+=A0</span></div><div style=3D"font-family:arial,sans-serif;font-size:12.8px=
+"><br></div><p style=3D"color:rgb(17,17,17);margin:3px 0px 10px;width:970.4=
+12px;font-size:14px;line-height:19.6px;float:none;font-family:jaf-bernina-s=
+ans,tahoma,geneva,sans-serif">Windows Download URL- =C2=A0{{forticlient_windows_download}}</p><p style=3D"color:rgb(17,17,17);margin:3px 0px 10px=
+;width:970.412px;font-size:14px;line-height:19.6px;float:none;font-family:j=
+af-bernina-sans,tahoma,geneva,sans-serif">Mac Download URL - {{forticlient_mac_download}}</p><p style=3D"color:rgb(17,17,17);margin:3px 0px 10px;width=
+:970.412px;font-size:14px;line-height:19.6px;float:none;font-family:jaf-ber=
+nina-sans,tahoma,geneva,sans-serif">Set the &quot;Remote Gateway&quot; to: =
+{{forticlient_remote_gateway}}<br style=3D"color:rgba(0,0,0,0.87);backgroun=
+d-color:rgb(250,250,250)">Port: {{forticlient_port}}<br style=3D"color:rgba=
+(0,0,0,0.87);background-color:rgb(250,250,250)"><span style=3D"color:rgb(34=
+,34,34)">Use your Okta=C2=A0credentials(username and password) for access t=
+he Forticlient VPN. You don&#39;t need to fill the certificate bar and the =
+second password bar.</span><br style=3D"color:rgba(0,0,0,0.87);background-c=
+olor:rgb(250,250,250)"><br style=3D"color:rgba(0,0,0,0.87);background-color=
+:rgb(250,250,250)"><br style=3D"color:rgba(0,0,0,0.87);background-color:rgb=
+(250,250,250)">Linux-<br style=3D"color:rgba(0,0,0,0.87);background-color:r=
+gb(250,250,250)"><br style=3D"color:rgba(0,0,0,0.87);background-color:rgb(2=
+50,250,250)">1. Download URL: {{forticlient_linux_download}} (only availabl=
+e to Gigaspaces Gmail and not your private one)</p><p style=3D"margin:3px 0=
+px 10px;width:970.412px;font-size:14px;line-height:19.6px;float:none;font-f=
+amily:jaf-bernina-sans,tahoma,geneva,sans-serif"><font color=3D"#111111">2.=
+ tar -</font>xvf<font color=3D"#111111">=C2=A0</font><span class=3D"gmail-m=
+_7163394082277396992gmail-m_7458735427088711003gmail-m_2344231487541322849g=
+mail-m_7920427479223155282gmail-il" style=3D"color:rgb(17,17,17)">it</span>=
+<font color=3D"#111111">=C2=A0and run the script.</font><br style=3D"color:=
+rgba(0,0,0,0.87);background-color:rgb(250,250,250)"><font color=3D"#111111"=
+>then use the address: </font><span style=3D"color:rgb(17,17,17)">{{forticlient_remote_gateway}}</span><span style=3D"color:rgb(17,17,17)"> with port:=
+=C2=A0</span><span style=3D"color:rgb(17,17,17)">{{forticlient_port}}</span=
+></p><p style=3D"margin:3px 0px 10px;width:970.412px;font-size:14px;line-he=
+ight:19.6px;float:none;font-family:jaf-bernina-sans,tahoma,geneva,sans-seri=
+f"><span color=3D"#000000">3. Use your Okta=C2=A0credentials(username and p=
+assword) for access the Forticlient VPN. You don&#39;t need to fill the cer=
+tificate bar and the second password bar.</span></p><p style=3D"margin:3px =
+0px 10px;width:970.412px;font-size:14px;line-height:19.6px;float:none;font-=
+family:jaf-bernina-sans,tahoma,geneva,sans-serif"><br></p><p style=3D"margi=
+n:3px 0px 10px;width:970.412px;font-size:14px;line-height:19.6px;float:none=
+;font-family:jaf-bernina-sans,tahoma,geneva,sans-serif">Let us know if you =
+have any question/concern.<br></p><p style=3D"margin:3px 0px 10px;width:970=
+.412px;font-size:14px;line-height:19.6px;float:none;font-family:jaf-bernina=
+-sans,tahoma,geneva,sans-serif">Thanks,<br></p><p style=3D"margin:3px 0px 1=
+0px;width:970.412px;font-size:14px;line-height:19.6px;float:none;font-famil=
+y:jaf-bernina-sans,tahoma,geneva,sans-serif">The IT team.</p></div></div></=
+div><div><br></div>-- <br><div class=3D"gmail_signature"><div dir=3D"ltr"><=
+div><div dir=3D"ltr"><div dir=3D"ltr"><div>Yuval</div></div></div></div></d=
+iv></div>
+</div>
