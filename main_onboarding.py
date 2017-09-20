@@ -184,6 +184,11 @@ def _get_okta_group_id(group_name):
 
 
 def _create_work_mail(current_user_dict):
+    """
+    Create work mail address from user profile data
+    :param current_user_dict: The dict of the user data
+    :return: The work mail
+    """
     mail_prefix = ''.join(
         [current_user_dict['First Name'].lower(),
          current_user_dict['Last Name'].lower()[0]])
