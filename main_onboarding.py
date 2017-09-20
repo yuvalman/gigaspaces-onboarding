@@ -2,18 +2,17 @@ import json
 import logging
 import os
 from datetime import datetime
-
 import boto3
 import rackspace_onboarding
 import requests
-import yaml
+# import yaml
 from jinja2 import Template
 
 
-def _config_var(config_file_path):
-    with open(config_file_path) as config:
-        conf_var = yaml.load(config.read())
-        return conf_var
+# def _config_var(config_file_path):
+#     with open(config_file_path) as config:
+#         conf_var = yaml.load(config.read())
+#         return conf_var
 
 
 # def _s3_object_read(client,bucket,key):
@@ -41,47 +40,50 @@ logging.basicConfig(
     format=log_format, datefmt='%m-%d %H:%M:%S', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-conf_vars = _config_var(
-    '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
-okta_api_access_token = conf_vars['okta_api_access_token']
-# s3_object = yaml.load(_s3_object_read('s3', 'yuvalm', 'okta-aws-config.yaml'))
-request_samanage_incidents =\
+# conf_vars = _config_var(
+#     '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
+# okta_api_access_token = conf_vars['okta_api_access_token']
+# # s3_object = yaml.load(_s3_object_read('s3', 'yuvalm', 'okta-aws-config.yaml'))
+# request_samanage_incidents =\
+#     'https://api.samanage.com/incidents.json?layout=long'
+# samanage_token = conf_vars['samanage_token']
+
+
+# source = conf_vars['source']
+# forticlient_windows_download = conf_vars['forticlient_windows_download']
+# forticlient_mac_download = conf_vars['forticlient_mac_download']
+# forticlient_linux_download = conf_vars['forticlient_linux_download']
+# forticlient_remote_gateway = conf_vars['forticlient_remote_gateway']
+# forticlient_port = conf_vars['forticlient_port']
+# rackspace_url = conf_vars['rackspace_url']
+
+request_samanage_incidents = \
     'https://api.samanage.com/incidents.json?layout=long'
-samanage_token = conf_vars['samanage_token']
+samanage_token = os.getenv('samanage_token')
+okta_api_access_token = os.getenv('okta_api_access_token')
+okta_api_org = os.getenv('okta_api_org')
+source = os.getenv('source')
+forticlient_windows_download = os.getenv('forticlient_windows_download')
+forticlient_mac_download = os.getenv('forticlient_mac_download')
+forticlient_linux_download = os.getenv('forticlient_linux_download')
+forticlient_remote_gateway = os.getenv('forticlient_remote_gateway')
+forticlient_port = os.getenv('forticlient_port')
+rackspace_url = os.getenv('rackspace_url')
+
 samanage_headers = {'X-Samanage-Authorization': 'Bearer {0}'.format(
     samanage_token),
-                    'Accept': 'application/vnd.samanage.v2.1+json',
-                    'Content-Type': 'application/json'}
+    'Accept': 'application/vnd.samanage.v2.1+json',
+    'Content-Type': 'application/json'}
 okta_headers = {'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'SSWS {0}'.format(okta_api_access_token)}
 samanage_incidents = _request_get_elements(request_samanage_incidents,
                                            samanage_headers)
 parms_list = ['Start date', 'First Name', 'Last Name',
-              'Company mail', 'Private mail', 'Cost Center',
+              'Private mail', 'Cost Center',
               'Mobile # (example:+972123456789)', 'Title', 'Employee Type',
               'Work Address', 'Manager']
-
-okta_user_data_dict = {}
-source = conf_vars['source']
-forticlient_windows_download = conf_vars['forticlient_windows_download']
-forticlient_mac_download = conf_vars['forticlient_mac_download']
-forticlient_linux_download = conf_vars['forticlient_linux_download']
-forticlient_remote_gateway = conf_vars['forticlient_remote_gateway']
-forticlient_port = conf_vars['forticlient_port']
-rackspace_url = conf_vars['rackspace_url']
-
-
-# samanage_token = os.getenv('samanage_token')
-# okta_api_access_token = os.getenv('okta_api_access_token')
-# okta_api_org = os.getenv('okta_api_org')
-# source = os.getenv('source')
-# forticlient_windows_download = os.getenv('forticlient_windows_download')
-# forticlient_mac_download = os.getenv('forticlient_mac_download')
-# forticlient_linux_download = os.getenv('forticlient_linux_download')
-# forticlient_remote_gateway = os.getenv('forticlient_remote_gateway')
-# forticlient_port = os.getenv('forticlient_port')
-# rackspace_url = os.getenv('rackspace_url')
+# okta_user_data_dict = {}
 
 def _request_create_element(element, headers, data):
     """
@@ -178,6 +180,19 @@ def _get_okta_group_id(group_name):
     return okta_group_id
 
 
+def _create_work_mail(current_user_dict):
+    mail_prefix = ''.join(
+        [current_user_dict['First Name'].lower(),
+         current_user_dict['Last Name'].lower()[0]])
+    cloudify_domain = 'cloudify.co'
+    gigaspaces_domain = 'gigaspaces.com'
+    if current_user_dict['Cost Center'] == 'Cloudify':
+        work_mail = '@'.join([mail_prefix, cloudify_domain])
+    if current_user_dict['Cost Center'] == 'IMC' \
+            or current_user_dict['Cost Center'] == 'Corporate':
+        work_mail = '@'.join([mail_prefix, gigaspaces_domain])
+    return work_mail
+
 
 def _build_okta_user_profile_from_samange_incident(incident, current_user_dict):
     """
@@ -190,13 +205,14 @@ def _build_okta_user_profile_from_samange_incident(incident, current_user_dict):
     department_okta_group_name = incident['department']['name']
     department = department_okta_group_name.split(', ', 1)[1]
     okta_group_id = _get_okta_group_id(department_okta_group_name)
+    work_mail = _create_work_mail(current_user_dict)
     okta_user_profile = {
         'profile': {
             'firstName': current_user_dict['First Name'],
             'state': user_state,
             'lastName': current_user_dict['Last Name'],
-            'email': current_user_dict['Company mail'],
-            'login': current_user_dict['Company mail'],
+            'email': work_mail,
+            'login': work_mail,
             'secondEmail': current_user_dict['Private mail'],
             'mobilePhone': current_user_dict['Mobile '
                                              '# (example:+972123456789)'],
@@ -226,7 +242,7 @@ def _rackspace_onboarding(okta_user, manager_mail):
     """
     user_name_prefix = okta_user['profile']['email'].split('@')[0]
     rackspace_user = rackspace_onboarding.main(user_name_prefix)
-    rackspace_username = rackspace_user['user'].name
+    rackspace_username = rackspace_user['user']['name']
     rackspace_password = rackspace_user['random_password']
     _send_ses_mail('ses', 'us-east-1', source,
                    'rackspace_mail_template',
@@ -372,14 +388,18 @@ def _send_ses_mail(client, region, source, file_name, **kwargs):
 #     pass
 
 
-def main():
+def main(event, context):
     """
     Doing Onboarding process for new employees in Gigaspaces and Cloudify
     companies
     """
+    logger.info('Start Onboaring process')
     for incident in samanage_incidents:
         if incident['name'] == 'Employee - On Boarding'\
                 and incident['assignee']['email'] == 'yuvalm@gigaspaces.com':
+            logger.info(
+                'The incident id: {0} start creating user'.format(
+                    incident['id']))
             custom_vars = incident['request_variables']
             user_dict = _create_current_user_dict(
                 custom_vars, parms_list)
@@ -390,6 +410,7 @@ def main():
                     'dynamodb', incident)
                 if item_in_dynamodb is True:
                     pass
+                    # logger.info('The incident id: {0} is already in the table: {1}'.format(incident_id, dynamodb_table))
                 else:
                     user_profile =\
                         _build_okta_user_profile_from_samange_incident(
@@ -420,5 +441,5 @@ def main():
                                    forticlient_port=forticlient_port)
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

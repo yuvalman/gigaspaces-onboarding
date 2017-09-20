@@ -1,17 +1,26 @@
+import os
 from keystoneauth1.identity import v3
 from keystoneauth1 import session
 import keystoneclient.v3
 from novaclient import client
-import yaml
+# import yaml
 import random
 
-def _config_file(path_to_file):
-    with open(path_to_file) as config:
-        config_files = yaml.load(config.read())
-        return config_files
+# def _config_file(path_to_file):
+#     with open(path_to_file) as config:
+#         config_files = yaml.load(config.read())
+#         return config_files
+#
+# conf_file = _config_file(
+#     '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
 
-conf_file = _config_file(
-    '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
+rackspace_user_domain_name = os.getenv('rackspace_user_domain_name')
+rackspace_admin_username = os.getenv('rackspace_admin_username')
+rackspace_admin_password = os.getenv('rackspace_admin_password')
+rackspace_project_domain_name = os.getenv('rackspace_project_domain_name')
+rackspace_project_name = os.getenv('rackspace_project_name')
+rackspace_auth_url = os.getenv('rackspace_auth_url')
+rackspace_project_domain_name = os.getenv('rackspace_project_domain_name')
 
 
 def _openstack_auth(rackspace_user_domain_name, username, password,
@@ -46,12 +55,12 @@ def _openstack_client_session(client, *args):
     For example - 'version'
     :return: The Openstack client
     """
-    auth = _openstack_auth(conf_file['rackspace_user_domain_name'],
-                           conf_file['rackspace_admin_username'],
-                           conf_file['rackspace_admin_password'],
-                           conf_file['rackspace_project_domain_name'],
-                           conf_file['rackspace_project_name'],
-                           conf_file['rackspace_auth_url'])
+    auth = _openstack_auth(rackspace_user_domain_name,
+                           rackspace_admin_username,
+                           rackspace_admin_password,
+                           rackspace_project_domain_name,
+                           rackspace_project_name,
+                           rackspace_auth_url)
     sess = session.Session(auth=auth)
     openstack_client = client(*args, session=sess)
     return openstack_client
@@ -161,7 +170,7 @@ def main(username):
     """
     keystone_client = _openstack_client_session(keystoneclient.v3.client.Client)
     project = _create_project(keystone_client,
-                              conf_file['rackspace_project_domain_name'],
+                              rackspace_project_domain_name,
                               username)
     user = _create_user(keystone_client, username)
     _add_user_to_project(keystone_client, '_member_', user['user'].id,
