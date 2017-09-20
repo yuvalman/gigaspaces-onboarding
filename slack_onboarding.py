@@ -24,4 +24,5 @@ def main(token, email):
     :param email: The email of the user that will be invited
     :return:
     """
-    _invite_user(token, email, slack_headers)
+    invite_user = _invite_user(token, email, slack_headers)
+    return invite_user

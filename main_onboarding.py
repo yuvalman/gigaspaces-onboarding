@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import boto3
 import rackspace_onboarding
+import slack_onboarding
 import requests
 # import yaml
 from jinja2 import Template
@@ -69,6 +70,8 @@ forticlient_linux_download = os.getenv('forticlient_linux_download')
 forticlient_remote_gateway = os.getenv('forticlient_remote_gateway')
 forticlient_port = os.getenv('forticlient_port')
 rackspace_url = os.getenv('rackspace_url')
+slack_cloudify_token = os.getenv('slack_cloudify_token')
+slack_xap_token = os.getenv('slack_xap_token')
 
 samanage_headers = {'X-Samanage-Authorization': 'Bearer {0}'.format(
     samanage_token),
@@ -379,13 +382,14 @@ def _send_ses_mail(client, region, source, file_name, **kwargs):
     return send_mail
 
 
+def _cloudify_onboarding(okta_user, manager_mail):
+    slack_onboarding.main(slack_cloudify_token, okta_user['profile']['email'])
+    if okta_user['department'] == 'R&D':
+        _rackspace_onboarding(okta_user, manager_mail)
 
-# def _cloudify_onboarding():
-#     pass
-#
-#
-# def _imc_on_boarding():
-#     pass
+
+def _imc_onboarding(okta_user):
+    slack_onboarding.main(slack_xap_token, okta_user['profile']['email'])
 
 
 def main(event, context):
@@ -419,13 +423,13 @@ def main(event, context):
                         user_profile['okta_user_profile'])
                     okta_user_id = okta_user['id']
                     manager_mail = user_dict['manager_mail']
-                    # if okta_user['profile']['costCenter'] == 'Cloudify':
-                    #     _cloudify_onboarding()
-                    # if okta_user['profile']['costCenter'] == 'IMC':
-                    #     _imc_on_boarding()
-                    if user_profile['user_department'] == 'Cloudify, R&D':
-                        _rackspace_onboarding(okta_user, manager_mail)
                     activation_link = _get_activation_link(okta_user_id)
+                    if okta_user['profile']['costCenter'] == 'Cloudify':
+                        _cloudify_onboarding(okta_user, manager_mail)
+                    if okta_user['profile']['costCenter'] == 'IMC':
+                        _imc_onboarding(okta_user)
+                    # if user_profile['user_department'] == 'Cloudify, R&D':
+                    #     _rackspace_onboarding(okta_user, manager_mail)
                     _send_ses_mail('ses', 'us-east-1', source,
                                    'onboarding_mail_template',
                                    company_name=okta_user['profile']['costCenter'],
