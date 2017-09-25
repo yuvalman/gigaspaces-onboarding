@@ -1,6 +1,7 @@
 Subject: IT procedures - Welcome mail
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+From: "IT GigaSpaces" <it@gigaspaces.com>
 To: {{private_mail}}, {{company_mail}}
 Cc: {{manager_mail}}, it@gigaspaces.com
 

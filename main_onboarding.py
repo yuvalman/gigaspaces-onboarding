@@ -77,15 +77,15 @@ samanage_headers = {'X-Samanage-Authorization': 'Bearer {0}'.format(
     samanage_token),
     'Accept': 'application/vnd.samanage.v2.1+json',
     'Content-Type': 'application/json'}
-okta_headers = {'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'SSWS {0}'.format(okta_api_access_token)}
 samanage_incidents = _request_get_elements(request_samanage_incidents,
                                            samanage_headers)
 parms_list = ['Start date', 'First Name', 'Last Name',
               'Private mail', 'Cost Center',
               'Mobile # (example:+972123456789)', 'Title', 'Employee Type',
               'Work Address', 'Manager']
+okta_headers = {'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'SSWS {0}'.format(okta_api_access_token)}
 # okta_user_data_dict = {}
 
 def _request_create_element(element, headers, data):
@@ -306,6 +306,20 @@ def _get_activation_link(user_id):
     return activation_url
 
 
+def _clean_empty_strings_in_dict(d):
+    """
+    Clean empty strings from dictionary
+    :param d: The dictionary that will be cleaned
+    :return: The dictionary without the empty strings
+    """
+    if not isinstance(d, (dict, list)):
+        return d
+    if isinstance(d, list):
+        return [v for v in (_clean_empty_strings_in_dict(v) for v in d) if v]
+    return {k: v for k, v in (
+        (k, _clean_empty_strings_in_dict(v)) for k, v in d.items()) if v}
+
+
 def _put_incident_in_dynamodb(client, incident,
                               dynamodb_table='OnBoarding_Incidents'):
     """
@@ -320,13 +334,16 @@ def _put_incident_in_dynamodb(client, incident,
         dynamodb = boto3.resource(client, region_name='us-east-1')
         table = dynamodb.Table(dynamodb_table)
         incident_id = incident['id']
+        incident = _clean_empty_strings_in_dict(incident)
         return table.put_item(Item={'incident_id': incident_id,
-                                    'incident_info': json.dumps(incident)},
+                                    'incident_info': incident},
                               ConditionExpression='attribute_not_exists'
                                                   '(incident_id)')
     except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
         logger.info('The incident id: {0} is already in the table: {1}'.format(
             incident_id, dynamodb_table))
+    # except dynamodb.meta.client.exceptions.ClientError as e:
+    #     print e
         return True
 
 
@@ -388,18 +405,27 @@ def _send_ses_mail(client, region, source, file_name, **kwargs):
 
 
 def _cloudify_onboarding(okta_user, manager_mail):
+    """
+    Doing Main Onboarding process for new employees in Cloudify
+    :param okta_user: The details of the Okta user
+    :param manager_mail: The mail of the manager of the new user
+    """
     slack_onboarding.main(slack_cloudify_token, okta_user['profile']['email'])
     if okta_user['department'] == 'R&D':
         _rackspace_onboarding(okta_user, manager_mail)
 
 
 def _imc_onboarding(okta_user):
+    """
+    Doing Main Onboarding process for new employees in Gigaspaces
+    :param okta_user: The details of the Okta user
+    """
     slack_onboarding.main(slack_xap_token, okta_user['profile']['email'])
 
 
 def main(event, context):
     """
-    Doing Onboarding process for new employees in Gigaspaces and Cloudify
+    Doing Main Onboarding process for new employees in Gigaspaces and Cloudify
     companies
     """
     logger.info('Start Onboaring process')
