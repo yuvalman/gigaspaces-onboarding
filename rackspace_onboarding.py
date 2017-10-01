@@ -3,16 +3,7 @@ from keystoneauth1.identity import v3
 from keystoneauth1 import session
 import keystoneclient.v3
 from novaclient import client
-# import yaml
 import random
-
-# def _config_file(path_to_file):
-#     with open(path_to_file) as config:
-#         config_files = yaml.load(config.read())
-#         return config_files
-#
-# conf_file = _config_file(
-#     '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
 
 rackspace_user_domain_name = os.getenv('rackspace_user_domain_name')
 rackspace_admin_username = os.getenv('rackspace_admin_username')

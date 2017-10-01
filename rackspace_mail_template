@@ -12,7 +12,7 @@ pan><br clear=3D"all" style=3D"font-size:12.8px"><div style=3D"font-size:12=
 ize:12.8px">These are the credentials for your Rackspace account:</div><div=
  style=3D"font-size:12.8px"><span style=3D"font-size:12.8px"><br></span></d=
 iv><div style=3D"font-size:12.8px"><span style=3D"font-size:12.8px">URL: {{rackspace_url}}</span><b><br class=3D"gmail-m_4948215403963210590gmail-Appl=
-e-interchange-newline"></b></div><div style=3D"font-size:12.8px">username: {{rackspace_usrename}}</div><div style=3D"font-size:12.8px">password: {{rackspace_password}}</div></div><div style=3D"font-size:12.8px"><br></div><div=
+e-interchange-newline"></b></div><div style=3D"font-size:12.8px">username: {{rackspace_username}}</div><div style=3D"font-size:12.8px">password: {{rackspace_password}}</div></div><div style=3D"font-size:12.8px"><br></div><div=
  style=3D"font-size:12.8px"><span style=3D"font-size:12.8px">For using the =
 Rackspace, you have to use the VPN.</span><br></div><div style=3D"font-size=
 :12.8px"><span style=3D"font-size:12.8px"><br></span></div><div style=3D"fo=

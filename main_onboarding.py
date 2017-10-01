@@ -6,23 +6,8 @@ import boto3
 import rackspace_onboarding
 import slack_onboarding
 import requests
-# import yaml
 from jinja2 import Template
-
-
-# def _config_var(config_file_path):
-#     with open(config_file_path) as config:
-#         conf_var = yaml.load(config.read())
-#         return conf_var
-
-
-# def _s3_object_read(client,bucket,key):
-#     client = boto3.client(client)
-#     object = client.get_object(
-#         Bucket=bucket,
-#         Key=key
-#     )
-#     return object['Body'].read()
+import time
 
 
 def _request_get_elements(element, headers):
@@ -35,34 +20,14 @@ def _request_get_elements(element, headers):
     request_for_get_element = requests.get(element, headers=headers)
     return request_for_get_element.json()
 
-log_format =\
-    '[%(asctime)s] {%(filename)s:%(lineno)d} %(levelname)s - %(message)s'
-logging.basicConfig(
-    format=log_format, datefmt='%m-%d %H:%M:%S', level=logging.INFO)
-logger = logging.getLogger(__name__)
 
-# conf_vars = _config_var(
-#     '/home/yuvalm-pcu/Documents/scripts/onboarding-config.yaml')
-# okta_api_access_token = conf_vars['okta_api_access_token']
-# # s3_object = yaml.load(_s3_object_read('s3', 'yuvalm', 'okta-aws-config.yaml'))
-# request_samanage_incidents =\
-#     'https://api.samanage.com/incidents.json?layout=long'
-# samanage_token = conf_vars['samanage_token']
-
-
-# source = conf_vars['source']
-# forticlient_windows_download = conf_vars['forticlient_windows_download']
-# forticlient_mac_download = conf_vars['forticlient_mac_download']
-# forticlient_linux_download = conf_vars['forticlient_linux_download']
-# forticlient_remote_gateway = conf_vars['forticlient_remote_gateway']
-# forticlient_port = conf_vars['forticlient_port']
-# rackspace_url = conf_vars['rackspace_url']
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 request_samanage_incidents = \
     'https://api.samanage.com/incidents.json?layout=long'
 samanage_token = os.getenv('samanage_token')
 okta_api_access_token = os.getenv('okta_api_access_token')
-okta_api_org = os.getenv('okta_api_org')
 source = os.getenv('source')
 forticlient_windows_download = os.getenv('forticlient_windows_download')
 forticlient_mac_download = os.getenv('forticlient_mac_download')
@@ -86,7 +51,7 @@ parms_list = ['Start date', 'First Name', 'Last Name',
 okta_headers = {'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'SSWS {0}'.format(okta_api_access_token)}
-# okta_user_data_dict = {}
+
 
 def _request_create_element(element, headers, data):
     """
@@ -250,7 +215,7 @@ def _rackspace_onboarding(okta_user, manager_mail):
     """
     user_name_prefix = okta_user['profile']['email'].split('@')[0]
     rackspace_user = rackspace_onboarding.main(user_name_prefix)
-    rackspace_username = rackspace_user['user']['name']
+    rackspace_username = rackspace_user['user'].name
     rackspace_password = rackspace_user['random_password']
     _send_ses_mail('ses', 'us-east-1', source,
                    'rackspace_mail_template',
@@ -340,10 +305,8 @@ def _put_incident_in_dynamodb(client, incident,
                               ConditionExpression='attribute_not_exists'
                                                   '(incident_id)')
     except dynamodb.meta.client.exceptions.ConditionalCheckFailedException:
-        logger.info('The incident id: {0} is already in the table: {1}'.format(
+        logger.debug('The incident id: {0} is already in the table: {1}'.format(
             incident_id, dynamodb_table))
-    # except dynamodb.meta.client.exceptions.ClientError as e:
-    #     print e
         return True
 
 
@@ -411,7 +374,7 @@ def _cloudify_onboarding(okta_user, manager_mail):
     :param manager_mail: The mail of the manager of the new user
     """
     slack_onboarding.main(slack_cloudify_token, okta_user['profile']['email'])
-    if okta_user['department'] == 'R&D':
+    if okta_user['profile']['department'] == 'R&D':
         _rackspace_onboarding(okta_user, manager_mail)
 
 
@@ -428,13 +391,10 @@ def main(event, context):
     Doing Main Onboarding process for new employees in Gigaspaces and Cloudify
     companies
     """
-    logger.info('Start Onboaring process')
+    logger.info('Event details: {}'.format(event))
+    logger.info('Start Onboaring process...')
     for incident in samanage_incidents:
-        if incident['name'] == 'Employee - On Boarding'\
-                and incident['assignee']['email'] == 'yuvalm@gigaspaces.com':
-            logger.info(
-                'The incident id: {0} start creating user'.format(
-                    incident['id']))
+        if incident['name'] == 'Employee - On Boarding':
             custom_vars = incident['request_variables']
             user_dict = _create_current_user_dict(
                 custom_vars, parms_list)
@@ -443,24 +403,35 @@ def main(event, context):
             if time_to_create_user is True:
                 item_in_dynamodb = _put_incident_in_dynamodb(
                     'dynamodb', incident)
-                if item_in_dynamodb is True:
-                    pass
-                    # logger.info('The incident id: {0} is already in the table: {1}'.format(incident_id, dynamodb_table))
-                else:
+                if item_in_dynamodb is False:
+                    logger.info(
+                        'Start creating Okta user'
+                        ' from Samanage onboaring request')
                     user_profile =\
                         _build_okta_user_profile_from_samange_incident(
                             incident, current_user)
                     okta_user = _create_okta_user(
                         user_profile['okta_user_profile'])
+                    logger.info(
+                        'The user {0} {1} has been created in Okta'.format(
+                            okta_user['profile']['firstName'],
+                            okta_user['profile']['lastName']))
                     okta_user_id = okta_user['id']
                     manager_mail = user_dict['manager_mail']
                     activation_link = _get_activation_link(okta_user_id)
+                    logger.info(
+                        'Doing onboarding process to {0} employee'.format(
+                            okta_user['profile']['costCenter']))
+                    time.sleep(5)
+                    #Delay the onboarding function in few seconds for preventing
+                    #bouncing when inviting new users to Slack
                     if okta_user['profile']['costCenter'] == 'Cloudify':
                         _cloudify_onboarding(okta_user, manager_mail)
                     if okta_user['profile']['costCenter'] == 'IMC':
                         _imc_onboarding(okta_user)
-                    # if user_profile['user_department'] == 'Cloudify, R&D':
-                    #     _rackspace_onboarding(okta_user, manager_mail)
+                    logger.info('Finish Onboarding process')
+                    logger.info('Start sending welcome mail'
+                                ' to the new employee')
                     _send_ses_mail('ses', 'us-east-1', source,
                                    'onboarding_mail_template',
                                    company_name=okta_user['profile']['costCenter'],
@@ -474,7 +445,5 @@ def main(event, context):
                                    forticlient_linux_download=forticlient_linux_download,
                                    forticlient_remote_gateway=forticlient_remote_gateway,
                                    forticlient_port=forticlient_port)
-
-
-# if __name__ == '__main__':
-#     main()
+                    logger.info('Finish sending welcome mail'
+                                ' to the new employee')
