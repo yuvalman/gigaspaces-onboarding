@@ -14,7 +14,7 @@ It is based in AWS Lambda, and run once a day using cron job.
 First, it Add all the "Onboarding" incidents from Samanage to DynamoDB.
 
 When the time is right, it creates users in Okta, RackSpace(OpenStack) and Slack:
-- In Okta,it create automatically for the new worker users(depend on his department permissions) in all the needed 
+- In Okta, it create automatically users(depend on his department permissions) for the new worker in all the needed 
 apps (AWS, Microsoft Azure, GCP, Datadog, etc.) that support provisioning (using SAML).
 - In RackSpace, it creates user and assign him to a personal project.
 - In Slack, it invite new user to the right Slack team.
